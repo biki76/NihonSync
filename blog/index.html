@@ -1,0 +1,1126 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NihonSync Blog — Japanese Learning in Bengali | ビキ先生</title>
+<meta name="description" content="Free Japanese language learning blog for Bengali speakers. JLPT N5 guides, vocabulary, grammar, Kanji, and study tips by Biki Sensei.">
+<link rel="canonical" href="https://biki76.github.io/NihonSync/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@300;400;600;700&family=Noto+Sans+JP:wght@300;400;700;900&family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+/* ─── DESIGN TOKENS ─── */
+:root {
+  --red:    #c0392b;
+  --red-dark: #922b21;
+  --red-light: #f5b7b1;
+  --ink:    #1a1a2e;
+  --ink2:   #2c2c54;
+  --slate:  #4a4a6a;
+  --mist:   #f0eff6;
+  --white:  #ffffff;
+  --gold:   #d4a017;
+  --gold-lt: #fdf3d8;
+  --green:  #1e8449;
+  --blue:   #1a5276;
+  --teal:   #0e6655;
+  --purple: #6c3483;
+  --border: #e8e4f0;
+  --shadow-sm: 0 2px 12px rgba(26,26,46,0.07);
+  --shadow-md: 0 8px 32px rgba(26,26,46,0.12);
+  --shadow-lg: 0 20px 60px rgba(26,26,46,0.18);
+  --r: 16px;
+  --r-lg: 24px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Noto Sans Bengali', 'Noto Sans JP', sans-serif;
+  background: var(--mist);
+  color: var(--ink);
+  line-height: 1.75;
+  font-size: 16px;
+  overflow-x: hidden;
+}
+
+/* ─── NOISE TEXTURE OVERLAY ─── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.6;
+}
+
+.container {
+  max-width: 1020px;
+  margin: 0 auto;
+  padding: 0 24px;
+  position: relative;
+  z-index: 1;
+}
+
+/* ─── FLOATING TOP BAR ─── */
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(26, 26, 46, 0.96);
+  backdrop-filter: blur(12px);
+  padding: 14px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.topbar-logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: -0.02em;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+
+.topbar-logo .jp {
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 0.9rem;
+  opacity: 0.6;
+  font-weight: 300;
+}
+
+.topbar-pill {
+  background: var(--red);
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 4px 14px;
+  border-radius: 50px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* ─── HERO ─── */
+.hero {
+  position: relative;
+  background: linear-gradient(150deg, var(--ink) 0%, var(--ink2) 60%, #3b1f6e 100%);
+  color: #fff;
+  padding: 90px 32px 80px;
+  text-align: center;
+  overflow: hidden;
+  margin-bottom: 60px;
+}
+
+.hero::before {
+  content: 'NihonSync';
+  position: absolute;
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(80px, 18vw, 220px);
+  font-weight: 900;
+  color: rgba(255,255,255,0.03);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  white-space: nowrap;
+  letter-spacing: -0.04em;
+  pointer-events: none;
+  user-select: none;
+}
+
+.hero-kana {
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 1rem;
+  letter-spacing: 0.3em;
+  opacity: 0.5;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  animation: fadeUp 0.8s ease both;
+}
+
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.2rem, 5vw, 3.8rem);
+  font-weight: 900;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  margin-bottom: 20px;
+  animation: fadeUp 0.9s 0.1s ease both;
+}
+
+.hero h1 span {
+  color: var(--red-light);
+  font-style: italic;
+}
+
+.hero-sub {
+  font-size: 1.05rem;
+  opacity: 0.78;
+  max-width: 560px;
+  margin: 0 auto 30px;
+  line-height: 1.8;
+  animation: fadeUp 1s 0.2s ease both;
+  font-weight: 300;
+}
+
+.hero-stats {
+  display: inline-flex;
+  gap: 0;
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 50px;
+  overflow: hidden;
+  animation: fadeUp 1.1s 0.3s ease both;
+}
+
+.hero-stat {
+  padding: 10px 24px;
+  font-size: 0.85rem;
+  border-right: 1px solid rgba(255,255,255,0.15);
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.hero-stat:last-child { border-right: none; }
+
+.hero-stat strong {
+  font-weight: 700;
+  color: var(--red-light);
+}
+
+/* Decorative circles */
+.hero-circle {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.06;
+  pointer-events: none;
+}
+.hero-circle-1 { width: 400px; height: 400px; background: var(--red); top: -100px; right: -80px; }
+.hero-circle-2 { width: 250px; height: 250px; background: #fff; bottom: -60px; left: 5%; }
+.hero-circle-3 { width: 120px; height: 120px; background: var(--gold); bottom: 30px; right: 15%; }
+
+/* ─── SECTION LABEL ─── */
+.section-label {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 32px;
+  animation: fadeUp 0.7s ease both;
+}
+
+.section-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+.section-label-text {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--slate);
+}
+
+.section-label-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--red);
+  flex-shrink: 0;
+}
+
+/* ─── INTRO CARD ─── */
+.intro-card {
+  background: var(--white);
+  border-radius: var(--r-lg);
+  padding: 40px 44px;
+  box-shadow: var(--shadow-md);
+  margin-bottom: 48px;
+  border-top: 4px solid var(--red);
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 32px;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.intro-card::after {
+  content: '日本語';
+  position: absolute;
+  right: -20px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 7rem;
+  font-weight: 900;
+  color: rgba(192, 57, 43, 0.05);
+  pointer-events: none;
+  user-select: none;
+  line-height: 1;
+}
+
+.intro-icon {
+  width: 72px;
+  height: 72px;
+  background: linear-gradient(135deg, var(--red), var(--red-dark));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  flex-shrink: 0;
+  box-shadow: 0 8px 24px rgba(192, 57, 43, 0.35);
+}
+
+.intro-card h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: var(--ink);
+}
+
+.intro-card p {
+  color: var(--slate);
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
+/* ─── BLOG GRID ─── */
+.blog-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-bottom: 64px;
+}
+
+.post-card {
+  background: var(--white);
+  border-radius: var(--r);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  animation: fadeUp 0.6s ease both;
+}
+
+.post-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Color accents per card */
+.post-card:nth-child(1) { --accent-c: var(--red); }
+.post-card:nth-child(2) { --accent-c: var(--green); }
+.post-card:nth-child(3) { --accent-c: var(--blue); }
+.post-card:nth-child(4) { --accent-c: var(--gold); }
+.post-card:nth-child(5) { --accent-c: #8e3a6e; }
+.post-card:nth-child(6) { --accent-c: var(--teal); }
+.post-card:nth-child(7) { --accent-c: #c0392b; }
+.post-card:nth-child(8) { --accent-c: #2471a3; }
+
+.post-card-header {
+  padding: 6px 20px;
+  background: var(--accent-c);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.post-number {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.7rem;
+  color: rgba(255,255,255,0.7);
+  letter-spacing: 0.1em;
+}
+
+.post-level {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: rgba(255,255,255,0.9);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.post-body {
+  padding: 24px 26px 20px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.post-jp {
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 0.8rem;
+  color: var(--accent-c);
+  font-weight: 700;
+  margin-bottom: 8px;
+  letter-spacing: 0.05em;
+}
+
+.post-card h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  line-height: 1.35;
+  margin-bottom: 12px;
+  color: var(--ink);
+}
+
+.post-card h2 a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.post-card h2 a:hover { color: var(--accent-c); }
+
+.post-meta {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 0.78rem;
+  color: var(--slate);
+  margin-bottom: 14px;
+  flex-wrap: wrap;
+}
+
+.post-meta-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.post-excerpt {
+  font-size: 0.92rem;
+  color: var(--slate);
+  line-height: 1.75;
+  margin-bottom: 18px;
+  flex: 1;
+}
+
+.post-divider {
+  height: 1px;
+  background: var(--border);
+  margin-bottom: 16px;
+}
+
+.post-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.post-tags {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.tag {
+  font-size: 0.72rem;
+  padding: 3px 10px;
+  border-radius: 50px;
+  background: var(--mist);
+  color: var(--slate);
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  border: 1px solid var(--border);
+}
+
+.read-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: var(--accent-c);
+  font-weight: 700;
+  font-size: 0.82rem;
+  text-decoration: none;
+  white-space: nowrap;
+  letter-spacing: 0.02em;
+  transition: gap 0.2s;
+}
+
+.read-more:hover { gap: 9px; }
+
+.read-more svg {
+  width: 14px;
+  height: 14px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: transform 0.2s;
+}
+
+.read-more:hover svg { transform: translateX(3px); }
+
+/* ─── FEATURED CARD (spans full width) ─── */
+.post-card.featured {
+  grid-column: 1 / -1;
+  flex-direction: row;
+}
+
+.post-card.featured .post-card-header {
+  writing-mode: vertical-rl;
+  padding: 24px 10px;
+  min-width: 52px;
+  justify-content: center;
+}
+
+.post-card.featured .post-body {
+  padding: 28px 32px;
+}
+
+.post-card.featured .post-number,
+.post-card.featured .post-level {
+  writing-mode: vertical-rl;
+}
+
+.post-card.featured h2 {
+  font-size: 1.4rem;
+}
+
+/* ─── AUTHOR SECTION ─── */
+.author-section {
+  background: linear-gradient(135deg, var(--ink) 0%, var(--ink2) 100%);
+  border-radius: var(--r-lg);
+  padding: 52px 48px;
+  margin-bottom: 60px;
+  color: #fff;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 40px;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.author-section::before {
+  content: 'ビキ先生';
+  position: absolute;
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 8rem;
+  font-weight: 900;
+  color: rgba(255,255,255,0.04);
+  right: -10px;
+  bottom: -20px;
+  pointer-events: none;
+  user-select: none;
+  line-height: 1;
+}
+
+.author-avatar-wrap {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.author-avatar {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid rgba(255,255,255,0.2);
+  display: block;
+}
+
+.author-badge {
+  position: absolute;
+  bottom: -4px;
+  right: -4px;
+  background: var(--red);
+  border-radius: 50px;
+  padding: 4px 10px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border: 2px solid var(--ink);
+}
+
+.author-info .label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  opacity: 0.5;
+  margin-bottom: 8px;
+}
+
+.author-info h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 14px;
+  line-height: 1.2;
+}
+
+.author-info h3 .jp {
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 300;
+  opacity: 0.6;
+  margin-left: 10px;
+}
+
+.author-info p {
+  font-size: 0.97rem;
+  opacity: 0.8;
+  line-height: 1.85;
+  max-width: 600px;
+  margin-bottom: 20px;
+}
+
+.author-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--red);
+  color: #fff;
+  text-decoration: none;
+  padding: 12px 24px;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  transition: background 0.2s, transform 0.2s;
+  box-shadow: 0 4px 16px rgba(192, 57, 43, 0.4);
+}
+
+.author-cta:hover {
+  background: var(--red-dark);
+  transform: translateY(-2px);
+}
+
+/* ─── NEWSLETTER STRIP ─── */
+.newsletter-strip {
+  background: var(--gold-lt);
+  border: 1px solid #e8d48b;
+  border-radius: var(--r);
+  padding: 28px 36px;
+  margin-bottom: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.newsletter-strip-text strong {
+  display: block;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.15rem;
+  color: var(--ink);
+  margin-bottom: 4px;
+}
+
+.newsletter-strip-text span {
+  font-size: 0.88rem;
+  color: var(--slate);
+}
+
+.newsletter-strip-app {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--ink);
+  color: #fff;
+  text-decoration: none;
+  padding: 11px 22px;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 0.88rem;
+  white-space: nowrap;
+  transition: background 0.2s;
+  flex-shrink: 0;
+}
+
+.newsletter-strip-app:hover { background: var(--ink2); }
+
+/* ─── FOOTER ─── */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 40px 0;
+  text-align: center;
+  color: var(--slate);
+  font-size: 0.85rem;
+}
+
+footer .footer-logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 10px;
+}
+
+footer .footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+footer .footer-links a {
+  color: var(--slate);
+  text-decoration: none;
+  font-size: 0.82rem;
+  transition: color 0.2s;
+}
+
+footer .footer-links a:hover { color: var(--red); }
+
+footer p { color: var(--slate); opacity: 0.7; }
+
+footer a { color: var(--red); text-decoration: none; }
+
+/* ─── ANIMATIONS ─── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(22px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.post-card:nth-child(1) { animation-delay: 0.05s; }
+.post-card:nth-child(2) { animation-delay: 0.10s; }
+.post-card:nth-child(3) { animation-delay: 0.15s; }
+.post-card:nth-child(4) { animation-delay: 0.20s; }
+.post-card:nth-child(5) { animation-delay: 0.25s; }
+.post-card:nth-child(6) { animation-delay: 0.30s; }
+.post-card:nth-child(7) { animation-delay: 0.35s; }
+.post-card:nth-child(8) { animation-delay: 0.40s; }
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 700px) {
+  .blog-grid { grid-template-columns: 1fr; }
+  .post-card.featured { flex-direction: column; }
+  .post-card.featured .post-card-header { writing-mode: horizontal-tb; }
+  .intro-card { grid-template-columns: 1fr; text-align: center; padding: 28px 24px; }
+  .intro-card::after { display: none; }
+  .author-section { grid-template-columns: 1fr; text-align: center; padding: 36px 24px; }
+  .author-avatar-wrap { margin: 0 auto; }
+  .newsletter-strip { flex-direction: column; text-align: center; }
+  .hero { padding: 60px 20px 56px; }
+  .hero-stats { flex-direction: column; border-radius: var(--r); }
+  .hero-stat { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.15); }
+  .hero-stat:last-child { border-bottom: none; }
+  .topbar { padding: 12px 20px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ─── TOP BAR ─── -->
+<nav class="topbar">
+  <a href="https://biki76.github.io/NihonSync/" class="topbar-logo">
+    🎌 NihonSync <span class="jp">ニホンシンク</span>
+  </a>
+  <span class="topbar-pill">JLPT N5 Free</span>
+</nav>
+
+<!-- ─── HERO ─── -->
+<div class="hero">
+  <div class="hero-circle hero-circle-1"></div>
+  <div class="hero-circle hero-circle-2"></div>
+  <div class="hero-circle hero-circle-3"></div>
+  <div class="container">
+    <div class="hero-kana">ビキ先生のブログ &nbsp;·&nbsp; Biki Sensei's Blog</div>
+    <h1>Learn Japanese,<br><span>the Bengali Way</span></h1>
+    <p class="hero-sub">
+      Every article here is forged from real study sessions, classroom mistakes, and years of teaching
+      Bengali speakers to crack the JLPT N5 — not from textbook summaries or recycled content.
+    </p>
+    <div class="hero-stats">
+      <div class="hero-stat"><strong>8</strong> In-Depth Articles</div>
+      <div class="hero-stat"><strong>100%</strong> Free Forever</div>
+      <div class="hero-stat"><strong>N5</strong> Fully Covered</div>
+      <div class="hero-stat">🇧🇩 Bengali Explanations</div>
+    </div>
+  </div>
+</div>
+
+<!-- ─── MAIN CONTENT ─── -->
+<div class="container">
+
+  <!-- INTRO CARD -->
+  <div class="intro-card">
+    <div class="intro-icon">🌸</div>
+    <div>
+      <h2>Why NihonSync is Different</h2>
+      <p>
+        Most Japanese learning content is built for English speakers — leaving Bengali learners to struggle
+        with double translations and cultural gaps. NihonSync fixes that. Every lesson, every example,
+        every memory trick here is crafted specifically for how Bengali speakers think, read, and learn.
+        From relatable মনিমিক (mnemonics) to honest stories about exam failures, this is the learning
+        companion Biki Sensei wished existed when he started.
+      </p>
+    </div>
+  </div>
+
+  <!-- ARTICLES SECTION LABEL -->
+  <div class="section-label">
+    <div class="section-label-dot"></div>
+    <span class="section-label-text">All Articles — Updated 2026</span>
+  </div>
+
+  <!-- BLOG GRID -->
+  <div class="blog-grid">
+
+    <!-- Card 1 -->
+    <div class="post-card featured">
+      <div class="post-card-header">
+        <span class="post-number">01</span>
+        <span class="post-level">Beginner</span>
+      </div>
+      <div class="post-body">
+        <div class="post-jp">ひらがな · 7日間プラン</div>
+        <h2><a href="hiragana-7-days.html">How to Memorize All 46 Hiragana Characters in 7 Days</a></h2>
+        <div class="post-meta">
+          <span class="post-meta-item">📅 May 14, 2026</span>
+          <span class="post-meta-item">⏱ 7-Day Structured Plan</span>
+          <span class="post-meta-item">🎯 Absolute Beginner</span>
+        </div>
+        <p class="post-excerpt">
+          Hiragana is the first mountain every Japanese learner must climb — and for Bengali speakers, it can
+          feel steep without the right map. This complete day-by-day guide breaks all 46 characters into
+          manageable clusters, pairing each character with Bengali-language mnemonics that actually stick.
+          Biki Sensei shares his personal 2019 learning journal — the exact flashcard sequences, handwriting
+          drills, and stroke-order routines that took him from zero to fluent recognition in a single week.
+          Includes the most common mistakes Bengali beginners make (like confusing ね with れ) and
+          how to avoid them from day one.
+        </p>
+        <div class="post-divider"></div>
+        <div class="post-footer">
+          <div class="post-tags">
+            <span class="tag">Hiragana</span>
+            <span class="tag">Writing</span>
+            <span class="tag">Mnemonics</span>
+            <span class="tag">7-Day Plan</span>
+          </div>
+          <a href="hiragana-7-days.html" class="read-more">
+            Read Article
+            <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="post-card">
+      <div class="post-card-header">
+        <span class="post-number">02</span>
+        <span class="post-level">N5 Essential</span>
+      </div>
+      <div class="post-body">
+        <div class="post-jp">は vs が · 助詞</div>
+        <h2><a href="wa-vs-ga-bengali.html">は (wa) vs が (ga): The Grammar Rule That Trips Every Bengali Learner</a></h2>
+        <div class="post-meta">
+          <span class="post-meta-item">📅 May 14, 2026</span>
+          <span class="post-meta-item">⏱ Deep Dive</span>
+        </div>
+        <p class="post-excerpt">
+          No grammar point causes more confusion in JLPT N5 than は and が — the topic marker vs the subject marker.
+          In Bengali, we don't separate "what we're talking about" from "who performs the action" the same way
+          Japanese does, which is precisely why this trips up Bengali speakers so consistently. This deep-dive
+          explains the distinction using real Bengali conversation parallels, 15+ example sentences, and
+          a simple three-question test you can apply to any sentence to instantly pick the right particle.
+        </p>
+        <div class="post-divider"></div>
+        <div class="post-footer">
+          <div class="post-tags">
+            <span class="tag">Grammar</span>
+            <span class="tag">Particles</span>
+            <span class="tag">Bengali</span>
+          </div>
+          <a href="wa-vs-ga-bengali.html" class="read-more">
+            Read Article
+            <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="post-card">
+      <div class="post-card-header">
+        <span class="post-number">03</span>
+        <span class="post-level">Vocabulary</span>
+      </div>
+      <div class="post-body">
+        <div class="post-jp">語彙 · N5必須単語</div>
+        <h2><a href="top-100-n5-vocabulary.html">Top 100 JLPT N5 Vocabulary Words — With Bengali Translations & Memory Tips</a></h2>
+        <div class="post-meta">
+          <span class="post-meta-item">📅 May 14, 2026</span>
+          <span class="post-meta-item">⏱ Master Reference</span>
+        </div>
+        <p class="post-excerpt">
+          The JLPT N5 vocabulary list has around 800 words — but mastering just 100 high-frequency ones gives
+          you 70% of what appears in the actual exam. This curated masterlist organizes those 100 words into
+          10 logical categories: People, Places, Food, Time, Adjectives, Action Verbs, Nature, Everyday Objects,
+          Colors, and Grammar Function Words. Every word includes its Bengali translation, romaji pronunciation,
+          and a memory tip designed specifically to click for Bengali speakers.
+        </p>
+        <div class="post-divider"></div>
+        <div class="post-footer">
+          <div class="post-tags">
+            <span class="tag">Vocabulary</span>
+            <span class="tag">JLPT N5</span>
+            <span class="tag">Reference</span>
+          </div>
+          <a href="top-100-n5-vocabulary.html" class="read-more">
+            Read Article
+            <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 4 -->
+    <div class="post-card">
+      <div class="post-card-header">
+        <span class="post-number">04</span>
+        <span class="post-level">Writing Skill</span>
+      </div>
+      <div class="post-body">
+        <div class="post-jp">書き順 · 筆順ルール</div>
+        <h2><a href="stroke-order-rules.html">Japanese Stroke Order: 7 Golden Rules Every Beginner Must Know</a></h2>
+        <div class="post-meta">
+          <span class="post-meta-item">📅 May 14, 2026</span>
+          <span class="post-meta-item">⏱ Writing Guide</span>
+        </div>
+        <p class="post-excerpt">
+          Why does stroke order even matter if the character looks the same? Because it determines how naturally
+          your hand flows, how fast you write, and — critically — how your handwriting looks to native readers.
+          This guide unpacks the 7 fundamental rules: top-to-bottom, left-to-right, horizontal before vertical,
+          center before sides, and more. Visual breakdowns, a 14-day practice schedule, and Biki's famous
+          "confused spider" story that makes rule #5 unforgettable.
+        </p>
+        <div class="post-divider"></div>
+        <div class="post-footer">
+          <div class="post-tags">
+            <span class="tag">Stroke Order</span>
+            <span class="tag">Writing</span>
+            <span class="tag">Kanji</span>
+          </div>
+          <a href="stroke-order-rules.html" class="read-more">
+            Read Article
+            <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 5 -->
+    <div class="post-card">
+      <div class="post-card-header">
+        <span class="post-number">05</span>
+        <span class="post-level">Exam Strategy</span>
+      </div>
+      <div class="post-body">
+        <div class="post-jp">JLPT N5 · 合格戦略</div>
+        <h2><a href="how-to-pass-jlpt-n5.html">How to Pass JLPT N5: An Honest 3-Month Study Plan</a></h2>
+        <div class="post-meta">
+          <span class="post-meta-item">📅 May 14, 2026</span>
+          <span class="post-meta-item">⏱ 3-Month Roadmap</span>
+        </div>
+        <p class="post-excerpt">
+          Biki Sensei passed the JLPT N5 with 98 out of 180 — barely. And that near-failure taught him more
+          about what actually works than any textbook could. This complete study plan is built from that hard-won
+          knowledge: Phase 1 (Scripts & Basics), Phase 2 (Grammar & Vocabulary Drilling), Phase 3 (Listening
+          & Timed Mock Exams). Includes daily hour-by-hour schedules, the best free resources for Bengali
+          speakers, and how to handle the listening section if you've never heard natural Japanese speech before.
+        </p>
+        <div class="post-divider"></div>
+        <div class="post-footer">
+          <div class="post-tags">
+            <span class="tag">JLPT N5</span>
+            <span class="tag">Study Plan</span>
+            <span class="tag">Exam Tips</span>
+          </div>
+          <a href="how-to-pass-jlpt-n5.html" class="read-more">
+            Read Article
+            <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 6 -->
+    <div class="post-card">
+      <div class="post-card-header">
+        <span class="post-number">06</span>
+        <span class="post-level">Writing Systems</span>
+      </div>
+      <div class="post-body">
+        <div class="post-jp">ひらがな vs カタカナ</div>
+        <h2><a href="katakana-vs-hiragana.html">Katakana vs Hiragana: When Does Japanese Use Which Script?</a></h2>
+        <div class="post-meta">
+          <span class="post-meta-item">📅 May 14, 2026</span>
+          <span class="post-meta-item">⏱ Script Guide</span>
+        </div>
+        <p class="post-excerpt">
+          Japanese uses two phonetic scripts that represent the same sounds — so why have both? The answer reveals
+          a fascinating layer of the language's logic. Katakana signals foreignness, scientific terminology,
+          onomatopoeia, and stylistic emphasis; Hiragana carries native words, grammatical endings, and
+          children's texts. This guide walks through the 5 core Katakana rules every Bengali learner needs,
+          with loan-word examples you'll recognize immediately (テレビ = TV, アイスクリーム = ice cream).
+        </p>
+        <div class="post-divider"></div>
+        <div class="post-footer">
+          <div class="post-tags">
+            <span class="tag">Katakana</span>
+            <span class="tag">Hiragana</span>
+            <span class="tag">Scripts</span>
+          </div>
+          <a href="katakana-vs-hiragana.html" class="read-more">
+            Read Article
+            <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 7 -->
+    <div class="post-card">
+      <div class="post-card-header">
+        <span class="post-number">07</span>
+        <span class="post-level">Conversation</span>
+      </div>
+      <div class="post-body">
+        <div class="post-jp">日本語の挨拶 · あいさつ</div>
+        <h2><a href="common-greetings.html">8 Essential Japanese Greetings — And the Cultural Rules Behind Them</a></h2>
+        <div class="post-meta">
+          <span class="post-meta-item">📅 May 14, 2026</span>
+          <span class="post-meta-item">⏱ Conversation Starter</span>
+        </div>
+        <p class="post-excerpt">
+          Japanese greetings are not just polite phrases — they carry social signals about your relationship,
+          the time of day, and the formality of the situation. This article covers the 8 greetings every
+          Bengali learner must internalize, from おはようございます (good morning) to お疲れ様でした (used
+          at the end of a work shift). Discover why using さようなら in daily conversations can actually
+          sound cold or final — and what to say instead. Includes pitch accent tips and the concept of
+          politeness levels (丁寧語) in simple Bengali terms.
+        </p>
+        <div class="post-divider"></div>
+        <div class="post-footer">
+          <div class="post-tags">
+            <span class="tag">Greetings</span>
+            <span class="tag">Conversation</span>
+            <span class="tag">Culture</span>
+          </div>
+          <a href="common-greetings.html" class="read-more">
+            Read Article
+            <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 8 -->
+    <div class="post-card">
+      <div class="post-card-header">
+        <span class="post-number">08</span>
+        <span class="post-level">Kanji Mastery</span>
+      </div>
+      <div class="post-body">
+        <div class="post-jp">漢字 · N5最初の50字</div>
+        <h2><a href="jlpt-n5-kanji-first-50.html">JLPT N5 Kanji: The First 50 Characters You Need to Master</a></h2>
+        <div class="post-meta">
+          <span class="post-meta-item">📅 May 14, 2026</span>
+          <span class="post-meta-item">⏱ 5-Week Program</span>
+        </div>
+        <p class="post-excerpt">
+          Kanji feels like the impossible wall — but it's more scalable than it looks. The JLPT N5 requires
+          only around 100 Kanji, and this guide breaks the first 50 into 5 thematic weekly batches: Numbers &amp;
+          Counting (一 二 三…), People &amp; Family (人 母 父…), Nature (山 川 日 月…), Actions (食 飲 見…),
+          and Time &amp; Place (年 月 日 上 下…). Each character includes ON-reading, KUN-reading, example
+          compound words, and Biki's visual story-association technique that replaces rote repetition with
+          actual understanding.
+        </p>
+        <div class="post-divider"></div>
+        <div class="post-footer">
+          <div class="post-tags">
+            <span class="tag">Kanji</span>
+            <span class="tag">JLPT N5</span>
+            <span class="tag">5-Week Plan</span>
+          </div>
+          <a href="jlpt-n5-kanji-first-50.html" class="read-more">
+            Read Article
+            <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /blog-grid -->
+
+  <!-- APP STRIP -->
+  <div class="newsletter-strip">
+    <div class="newsletter-strip-text">
+      <strong>📱 Take NihonSync With You</strong>
+      <span>Free Android app — JLPT N5 flashcards, quizzes &amp; audio, all in Bengali. No ads, no paywalls.</span>
+    </div>
+    <a href="https://biki76.github.io/NihonSync/" class="newsletter-strip-app">
+      Download Free App →
+    </a>
+  </div>
+
+  <!-- AUTHOR SECTION -->
+  <div class="author-section">
+    <div class="author-avatar-wrap">
+      <img
+        class="author-avatar"
+        src="https://biki76.github.io/NihonSync/assets/biki-sensei.jpg"
+        alt="Biki Akram — Biki Sensei"
+        onerror="this.src='https://ui-avatars.com/api/?name=Biki+Akram&background=c0392b&color=fff&size=110&bold=true'"
+      >
+      <span class="author-badge">Sensei</span>
+    </div>
+    <div class="author-info">
+      <p class="label">Your Guide</p>
+      <h3>Biki Akram <span class="jp">ビキ先生</span></h3>
+      <p>
+        I'm a Japanese language educator and developer from Bangladesh. I built NihonSync because when I
+        started learning Japanese in 2019, every quality resource assumed I was an English speaker. I wasn't —
+        and millions of Bengali learners aren't either. Every article on this blog comes from real classroom
+        teaching, genuine exam experience (including a near-fail), and direct feedback from thousands of
+        Bengali-speaking students who pushed me to explain things better. My mission is simple: make Japanese
+        genuinely accessible to every Bengali speaker on earth, for free.
+      </p>
+      <a href="https://biki76.github.io/NihonSync/" class="author-cta">
+        🎌 Explore NihonSync App
+      </a>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">NihonSync</div>
+    <div class="footer-links">
+      <a href="hiragana-7-days.html">Hiragana Guide</a>
+      <a href="wa-vs-ga-bengali.html">Grammar</a>
+      <a href="top-100-n5-vocabulary.html">Vocabulary</a>
+      <a href="how-to-pass-jlpt-n5.html">Study Plan</a>
+      <a href="jlpt-n5-kanji-first-50.html">Kanji</a>
+    </div>
+    <p>© 2026 ビキ先生 Studio &nbsp;·&nbsp; <a href="https://biki76.github.io/NihonSync/">NihonSync</a> &nbsp;·&nbsp; Built with ❤️ for Bengali Japanese Learners</p>
+    <p style="margin-top:6px;font-size:0.78rem">All content is original and written by Biki Akram. Designed for JLPT N5 aspirants in Bangladesh &amp; beyond.</p>
+  </footer>
+
+</div><!-- /container -->
+</body>
+</html>
